@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div *ngIf="message != undefined ">{{message}}</div>
+    <div *ngIf="errorMessage != undefined ">{{errorMessage}}</div> -->
+    <form >
+        <label for="Appointment Id">Appointment Id</label> &nbsp;&nbsp;&nbsp;
+        <input type ="number" name="appointmentId" required id="appointmentId" [(ngModel)]="appointmentId"> <br>
+        
+        <input type = "radio" (click)="admitGeneralPatient()" name="Bed" value="General Bed"> &nbsp;&nbsp;&nbsp; 
+        <label for="General Bed">General Bed</label> <br>
+        <input type = "radio" (click)="admitIntensiveCarePatient()" name="Bed" value="Intensive Care Bed"> &nbsp;&nbsp;&nbsp;
+        <label for="Intensive Care Bed">Intensive Care Bed</label> <br>
+        <input type = "radio" (click)="admitIntensiveCriticalCarePatient()" name="Bed" value="Intensive Critical Care Bed"> &nbsp;&nbsp;&nbsp;
+        <label for="Intensive Critical Care Bed">Intensive Critical Care Bed</label> <br>
+        <input type = "radio" (click)="admitVentilatorPatient()" name="Bed" value="Ventilator Bed"> &nbsp;&nbsp;&nbsp;
+        <label for="Ventilator Bed">Ventilator Bed</label>
+    <!-- <button name = "submit">submit</button> -->
+    </form>
+</body>
+</html>
+

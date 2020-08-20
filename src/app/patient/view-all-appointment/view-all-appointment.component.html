@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    
+    <div class="card-header text-center mb-5 border-danger">
+        <h4 class="card-title">
+            View All Appointments
+        </h4>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr class="table table-dark">
+                <th>Appointment ID</th>
+                <th>Appointment Date</th>
+                <th> Time </th>
+                <th> Status </th>
+                <th>Test Name</th>
+                <th>Diagnostic Center Name</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appointment of appointments">
+                <td>{{appointment.id}}</td>
+                <td>{{appointment.appointmentDate | date : 'mediumDate'}}</td>
+                <td>{{ appointment.appointmentDate | date : 'mediumTime'}}</td>
+                <td *ngIf="appointment.approvalStatus == 0 "> Pending </td>
+                <td *ngIf="appointment.approvalStatus == 1 "> Accepted </td>
+                <td *ngIf="appointment.approvalStatus == 2 "> Rejected </td>
+                <td>{{appointment.diagnosticTest.testName }}</td>
+                <td>{{appointment.diagnosticCenter.name}}</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+</div>

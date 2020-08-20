@@ -1,0 +1,73 @@
+<div class="container mt-4">
+    <div class="card-header border-success">
+        <h4 class="card-title text-success"> Add General Bed </h4>
+    </div>
+    <div class="row my-5">
+        <form [formGroup]="generalBedForm" (ngSubmit)="addGeneralBed()" class="col-sm-6 offset-md-3">
+            <div class="form-group row">
+                <label for="noOfBeds"> Enter No. Of Beds <span class="text-danger">*</span></label>
+                <input type="text" formControlName="noOfBeds" placeholder="Enter No Of Beds" id="noOfBeds"
+                    class="form-control" 
+                    [ngClass]="{ 'is-invalid': generalBedForm.controls.noOfBeds.touched && generalBedForm.controls.noOfBeds.errors }"
+                    />
+                <div
+                    *ngIf="(submitted || generalBedForm.controls.noOfBeds.touched || generalBedForm.controls.noOfBeds.dirty) && generalBedForm.controls.noOfBeds.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="generalBedForm.controls.noOfBeds.errors.required"> No Of Beds is Required!</span>
+                        <span *ngIf="generalBedForm.controls.noOfBeds.errors.min"> Min # of beds should be greater than
+                            0!</span>
+                        <span *ngIf="generalBedForm.controls.noOfBeds.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pricePerDay"> Enter Price Per Day <span class="text-danger">*</span></label>
+                <input type="text" formControlName="pricePerDay" placeholder="Enter Price Per Day" id="pricePerDay"
+                    class="form-control" 
+                    [ngClass]="{ 'is-invalid': generalBedForm.controls.pricePerDay.touched && generalBedForm.controls.pricePerDay.errors }"
+                    />
+                <div
+                    *ngIf="(submitted || generalBedForm.controls.pricePerDay.touched || generalBedForm.controls.pricePerDay.dirty) && generalBedForm.controls.pricePerDay.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="generalBedForm.controls.pricePerDay.errors.required"> Price of Bed is
+                            Required!</span>
+                        <span *ngIf="generalBedForm.controls.pricePerDay.errors.min"> Min Price should not be less than
+                            <i class="fas fa-rupee-sign"></i> 500 !</span>
+                        <span *ngIf="generalBedForm.controls.pricePerDay.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="frameMaterial"> Select Frame Material <span class="text-danger">*</span></label>
+                <select formControlName="frameMaterial" id="frameMaterial"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': generalBedForm.controls.frameMaterial.touched && generalBedForm.controls.frameMaterial.errors }"
+                    >
+                    <option value="" disabled> Select Frame Material </option>
+                    <option value="Steel"> Steel </option>
+                    <option value="Wood"> Wood </option>
+                </select>
+                <div
+                    *ngIf="(submitted || generalBedForm.controls.frameMaterial.touched || generalBedForm.controls.frameMaterial.dirty) && generalBedForm.controls.frameMaterial.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="generalBedForm.controls.frameMaterial.errors.required"> Frame Material is
+                            Required!</span>
+                        <span *ngIf="generalBedForm.controls.frameMaterial.errors.pattern"> Accepted Value are "Steel"
+                            and "Wood" only! </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-check row my-2">
+                <input type="checkbox" formControlName="isMovable" id="isMovable" class="form-check-input" />
+                <label for="isMovable" class="form-check-label"> Whether Movable? <span
+                        class="text-danger">*</span></label>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success mr-2"> Add Beds <i class="fas fa-plus"></i></button>
+                <button type="reset" class="btn btn-outline-danger"> Reset </button>
+            </div>
+        </form>
+    </div>
+</div>

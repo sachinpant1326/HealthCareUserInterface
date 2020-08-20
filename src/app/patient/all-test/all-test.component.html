@@ -1,0 +1,35 @@
+<div class="container mt-5 mb-5">
+    <div class="ml-3 mr-3 row heading">
+        <div class="mt-1 mb-1 col-lg-12 col-md-12">
+            <span>
+                <h4 class="text-center"><i class="fa fa-medkit"></i>&nbsp;All Test Taken</h4>
+            </span>
+        </div>
+    </div>
+    <div class="mt-3 ml-5 mr-5 ">
+        <div *ngFor="let test of tests;let i=index">
+            <div class="row TestDetail shadow-sm p-3 mb-5 bg-white rounded">
+                <div class="offset-lg-1 offset-md-1 col-lg-5 col-md-5">
+                    <div class="row">
+                        <h4 class="col-lg-12 col-md-12 TestName">{{test.id}} # {{test.testName}}</h4>
+                    </div>
+                    <div class="row">
+                        <p>Price : {{test.testPrice}}</p>
+                    </div>
+                    <div class="row">
+                        <p>Normal Value : {{test.normalValue}}&nbsp;{{test.units}}</p>
+                    </div>
+                </div>
+
+                <div class="mt-5 col-lg-5 col-md-5">
+                    <div class="row mb-2">
+                        <button class="btn btn-primary" 
+                            (click)="viewTestResult(test.id)" routerLink="../testResult">View Result</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

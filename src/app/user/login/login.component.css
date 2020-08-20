@@ -1,0 +1,8 @@
+.card-header{
+    border-top : 3px solid #0299f0;
+}
+.badge-danger{
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    padding:3px 10px; 
+}

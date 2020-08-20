@@ -1,0 +1,27 @@
+
+<div class="mt-2 ml-3 mr-3 row heading">
+    <div class="mt-1 mb-1 col-lg-12 col-md-12">
+    <span><h4 class="text-center">Remove Test from {{diagnosticCenter.name}}</h4></span>
+</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="offset-lg-1 offset-md-1 col-lg-6 col-md-6">
+            <table class="mx-auto table table-striped table-hover table-bordered mt-4">
+                <tr>
+                    <th>Test Id</th>
+                    <th>Test Name</th>
+                    <th>Normal Vale</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let test of diagnosticTestOfCenter;let i=index">
+                    <td>{{test.id}}</td>
+                    <td>{{test.testName}}</td>
+                    <td>{{test.normalValue}}&nbsp;{{test.units}}</td>
+                    <td><button class="btn btn-danger" (click)="removeTest(i)">Remove Test</button></td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</div>

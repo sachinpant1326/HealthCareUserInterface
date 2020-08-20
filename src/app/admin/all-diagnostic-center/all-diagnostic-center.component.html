@@ -1,0 +1,35 @@
+<div class="ml-3 mr-3 row heading">
+    <div class="mt-1 mb-1 col-lg-12 col-md-12">
+    <span><h4 class="text-center"><i class="fa fa-users"></i>&nbsp;Diagnostic Centers</h4></span>
+</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="content col-sm-4" *ngFor="let diagnosticCenter of diagnosticCenters;let i = index">
+            <div class="card mt-2">
+                <div class="card-header text-center font-weight-bold">
+                    {{diagnosticCenter.name}}
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <p class="offset-lg-1 offset-md-1">Address : {{diagnosticCenter.address}}</p>
+                    </div>
+                   <div class="row">
+                       <p class="offset-lg-1 offset-md-1">Email : {{diagnosticCenter.contactEmail}}</p>
+                   </div>
+                </div>
+                <div class="p-3 row">
+                    <div class="col-md-5 col-lg-5">
+                        <a class="btn btn-primary" (click)="addTestToDC(i)">Add Test</a>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <a class="btn btn-primary" (click)="removeTestFromDC(i)">Remove Test</a>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

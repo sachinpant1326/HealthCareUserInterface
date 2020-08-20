@@ -1,0 +1,83 @@
+<div class="container mt-4">
+    <div class="card-header border-danger">
+        <h4 class="card-title text-danger"> Add ICU Bed </h4>
+    </div>
+    <div class="row my-5">
+        <form [formGroup]="icuBedForm" (ngSubmit)="addICUBed()" class="col-sm-6 offset-md-3">
+            <div class="form-group row">
+                <label for="noOfBeds"> Enter No. Of Beds <span class="text-danger">*</span></label>
+                <input type="text" formControlName="noOfBeds" placeholder="Enter No Of Beds" id="noOfBeds"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': icuBedForm.controls.noOfBeds.touched && icuBedForm.controls.noOfBeds.errors }" />
+                <div
+                    *ngIf="(submitted || icuBedForm.controls.noOfBeds.touched || icuBedForm.controls.noOfBeds.dirty) && icuBedForm.controls.noOfBeds.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="icuBedForm.controls.noOfBeds.errors.required"> No Of Beds is Required!</span>
+                        <span *ngIf="icuBedForm.controls.noOfBeds.errors.min"> Min # of beds should be greater than
+                            0!</span>
+                        <span *ngIf="icuBedForm.controls.noOfBeds.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pricePerDay"> Enter Price Per Day <span class="text-danger">*</span></label>
+                <input type="text" formControlName="pricePerDay" placeholder="Enter Price Per Day" id="pricePerDay"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': icuBedForm.controls.pricePerDay.touched && icuBedForm.controls.pricePerDay.errors }" />
+                <div
+                    *ngIf="(submitted || icuBedForm.controls.pricePerDay.touched || icuBedForm.controls.pricePerDay.dirty) && icuBedForm.controls.pricePerDay.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="icuBedForm.controls.pricePerDay.errors.required"> Price of Bed is
+                            Required!</span>
+                        <span *ngIf="icuBedForm.controls.pricePerDay.errors.min"> Min Price should not be less than
+                            <i class="fas fa-rupee-sign"></i> 1000 !</span>
+                        <span *ngIf="icuBedForm.controls.pricePerDay.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="noOfFunctions"> Enter No Of Functions <span class="text-danger">*</span></label>
+                <input type="text" formControlName="noOfFunctions" placeholder="Enter No Of Functions" id="noOfFunctions"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': icuBedForm.controls.noOfFunctions.touched && icuBedForm.controls.noOfFunctions.errors }" />
+                <div
+                    *ngIf="(submitted || icuBedForm.controls.noOfFunctions.touched || icuBedForm.controls.noOfFunctions.dirty) && icuBedForm.controls.noOfFunctions.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="icuBedForm.controls.noOfFunctions.errors.required"> No. of Functions is
+                            Required!</span>
+                        <span *ngIf="icuBedForm.controls.noOfFunctions.errors.min"> Min functions should be 3!</span>
+                        <span *ngIf="icuBedForm.controls.noOfFunctions.errors.max"> Max functions should be 5!</span>
+
+                        <span *ngIf="icuBedForm.controls.noOfFunctions.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-check row my-2">
+                <input type="checkbox" formControlName="isKneeTiltAvailable" id="isKneeTiltAvailable" class="form-check-input" />
+                <label for="isKneeTiltAvailable" class="form-check-label"> Whether Knee Tilt Available ? <span
+                        class="text-danger">*</span></label>
+            </div>
+            <div class="form-check row my-2">
+                <input type="checkbox" formControlName="isHeadTiltAvailable" id="isHeadTiltAvailable" class="form-check-input" />
+                <label for="isHeadTiltAvailable" class="form-check-label"> Whether Head Tilt Available? <span
+                        class="text-danger">*</span></label>
+            </div>
+            <div class="form-check row my-2">
+                <input type="checkbox" formControlName="isElectric" id="isElectric" class="form-check-input" />
+                <label for="isElectric" class="form-check-label"> Whether Electric Variant ? <span
+                        class="text-danger">*</span></label>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success mr-2"> Add Beds <i class="fas fa-plus"></i></button>
+                <button type="reset" class="btn btn-outline-danger"> Reset </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="container mt-4">
+    <div class="card-header"  style="border-color: rgb(129, 129, 20);">
+        <h4 class="card-title" style="color: rgb(129, 129, 20);"> Add Ventilator Bed </h4>
+    </div>
+    <div class="row my-5">
+        <form [formGroup]="ventilatorBedForm" (ngSubmit)="addVentilatorBed()" class="col-sm-6 offset-md-3">
+            <div class="form-group row">
+                <label for="noOfBeds"> Enter No. Of Beds <span class="text-danger">*</span></label>
+                <input type="text" formControlName="noOfBeds" placeholder="Enter No Of Beds" id="noOfBeds"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': ventilatorBedForm.controls.noOfBeds.touched && ventilatorBedForm.controls.noOfBeds.errors }" />
+                <div
+                    *ngIf="(submitted || ventilatorBedForm.controls.noOfBeds.touched || ventilatorBedForm.controls.noOfBeds.dirty) && ventilatorBedForm.controls.noOfBeds.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="ventilatorBedForm.controls.noOfBeds.errors.required"> No Of Beds is Required!</span>
+                        <span *ngIf="ventilatorBedForm.controls.noOfBeds.errors.min"> Min # of beds should be greater than
+                            0!</span>
+                        <span *ngIf="ventilatorBedForm.controls.noOfBeds.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pricePerDay"> Enter Price Per Day <span class="text-danger">*</span></label>
+                <input type="text" formControlName="pricePerDay" placeholder="Enter Price Per Day" id="pricePerDay"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': ventilatorBedForm.controls.pricePerDay.touched && ventilatorBedForm.controls.pricePerDay.errors }" />
+                <div
+                    *ngIf="(submitted || ventilatorBedForm.controls.pricePerDay.touched || ventilatorBedForm.controls.pricePerDay.dirty) && ventilatorBedForm.controls.pricePerDay.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="ventilatorBedForm.controls.pricePerDay.errors.required"> Price of Bed is
+                            Required!</span>
+                        <span *ngIf="ventilatorBedForm.controls.pricePerDay.errors.min"> Min Price should not be less than
+                            <i class="fas fa-rupee-sign"></i> 2000 !</span>
+                        <span *ngIf="ventilatorBedForm.controls.pricePerDay.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="respiratoryRate"> Enter Respiratory Rate <span class="text-danger">*</span></label>
+                <input type="text" formControlName="respiratoryRate" placeholder="Enter Respiratory Rate" id="respiratoryRate"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': ventilatorBedForm.controls.respiratoryRate.touched && ventilatorBedForm.controls.respiratoryRate.errors }" />
+                <div
+                    *ngIf="(submitted || ventilatorBedForm.controls.respiratoryRate.touched || ventilatorBedForm.controls.respiratoryRate.dirty) && ventilatorBedForm.controls.respiratoryRate.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="ventilatorBedForm.controls.respiratoryRate.errors.required"> Respiratory Rate is
+                            Required!</span>
+                        <span *ngIf="ventilatorBedForm.controls.respiratoryRate.errors.min"> Respiratory Rate should not be less than 10!</span>
+                        <span *ngIf="ventilatorBedForm.controls.respiratoryRate.errors.max"> Respiratory Rate should not be more than 15!</span>
+
+                        <span *ngIf="ventilatorBedForm.controls.respiratoryRate.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="type"> Select Type Of Ventilator <span class="text-danger">*</span></label>
+                <select formControlName="type" placeholder="Select Type" id="type" class="form-control"
+                    [ngClass]="{ 'is-invalid': ventilatorBedForm.controls.type.touched && ventilatorBedForm.controls.type.errors }">
+                    <option value="" disabled> Select Type Of Ventilator </option>
+                    <option value="Volume"> Volume </option>
+                    <option value="Pressure"> Pressure </option>
+                    <option value="Time"> Time </option>
+
+                </select>
+                <div
+                    *ngIf="(submitted || ventilatorBedForm.controls.type.touched || ventilatorBedForm.controls.type.dirty) && ventilatorBedForm.controls.type.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="ventilatorBedForm.controls.type.errors.required"> Type is
+                            Required!</span>
+                        <span *ngIf="ventilatorBedForm.controls.type.errors.pattern"> Accepted Value are "Volume"
+                            and "Pressure"  and "Time" only! </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success mr-2"> Add Beds <i class="fas fa-plus"></i></button>
+                <button type="reset" class="btn btn-outline-danger"> Reset </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="d-flex container justify-content-around align-items-center vh-100">
+    <div class="card p-0 col-sm-6 shadow">
+        <div class="card-header">
+            <h4 class="card-title"> Login </h4>
+        </div>
+
+        <div class="card-body">
+           
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="form-group">
+                    <label for="username"> Username </label>
+                    <input id="username" class="form-control" type="text" formControlName="username" placeholder="Enter Username" 
+                        [ngClass]="{ 'is-invalid': loginForm.controls.username.touched && loginForm.controls.username.errors }"
+                    />
+                    <div class="badge badge-pill badge-danger" *ngIf="(loginForm.controls.username.touched || loginForm.controls.username.dirty) && loginForm.controls.username.errors">
+                        <div *ngIf="loginForm.controls.username.errors.required">
+                            Username field is required!
+                        </div>
+                        <div *ngIf="loginForm.controls.username.errors.email">
+                            Username must be a valid email!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password"> Password </label>
+                    <input id="password" class="form-control" type="password" formControlName="password"
+                        placeholder="Enter Password" pattern="[A-Za-z0-9!@#]{8,20}" 
+                        [ngClass]="{ 'is-invalid': loginForm.controls.password.touched && loginForm.controls.password.errors }"
+                        />
+                        <div class="badge badge-pill badge-danger" *ngIf="(loginForm.controls.password.touched || loginForm.controls.password.dirty) && loginForm.controls.password.errors">
+                            <div *ngIf="loginForm.controls.password.errors.required">
+                                Password field is required!
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group d-flex justify-content-end">
+                    <a [routerLink]="'/user/sign-up'" class="btn btn-danger mr-3">Signup</a>
+                    <button type="submit" class="btn btn-primary"> Login <i class="fas fa-sign-in-alt"></i> </button>    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showLoad">
+    <app-loading></app-loading>
+</div>

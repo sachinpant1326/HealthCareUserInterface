@@ -1,0 +1,42 @@
+<div class="container mt-5">  
+<div class="card-header">
+  <h4 class="card-text">
+    List Of Vacant Beds
+  </h4>
+</div>
+
+  <div class="mt-2 text-center">
+</div>
+<table  class="table shadow text-center table-striped table-hover col-md-8 mx-auto mt-3">
+    <thead class="thead-dark shadow white-text">
+      
+    <tr>
+      <th>Bed Id</th>
+      <th>Appointment</th>
+      <th>Price PerDay</th>
+      <th>diagnosticCenter Name</th>
+      <th>No Of Functions</th>
+      <th>Knee Tilt Available</th>
+      <th>Head Tilt Available</th>
+      <th>Electric</th>
+      <th>Occupied</th>    
+    </tr>
+  </thead>
+  
+  <tr *ngFor="let bed of beds">
+    <td>{{bed.id}}</td>
+    <td>{{bed.appointment}}</td>
+    <td>{{bed.pricePerDay | currency:'INR'}}</td>
+    <td>{{bed.diagnosticCenter.name}}</td>
+    <td>{{bed.noOfFunctions}}</td>
+    <td>{{bed.kneeTiltAvailable}}</td>
+    <td>{{bed.headTiltAvailable}}</td>
+    <td>{{bed.electric}}</td>
+    <td>{{bed.occupied}}</td>
+    
+    
+    
+    
+  </tr>
+</table>
+</div>

@@ -1,0 +1,70 @@
+<div class="container" style="margin: 5px;">
+    <div class="row">
+         <form [formGroup]="appointmentDetail" (ngSubmit)="getAppointments()" class="form-inline col-md-12"> 
+                <div class="col-md-3">
+                    <input type="number" formControlName="centre" class="form-control" placeholder="Centre Id"/>
+                </div>
+                <div class="col-md-3">
+                    <select formControlName="test" class="form-control">
+                        <option *ngFor="let t of tests; let i = index" [value]="tests[i].testName">
+                          {{tests[i].testName}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select formControlName="status" class="form-control">
+                        <option value="1">Approved</option>
+                        <option value="2">Rejected</option>
+                        <option value="0">Unprocessed</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-success">View Appointments</button>
+                </div>
+        </form>
+    </div>
+
+    <!-- now table where appointment is shown-->
+
+    <div class="row">
+        <div class="col-md-offset-1 col-md-8">
+            <table class="table table-borderless scrolldown">
+                <thead>
+                    <tr>
+                        <th scope="col">Appointment No</th>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Timing</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let appointment of appointments;">
+                        <td scope="row">{{appointment.id}}</td>
+                        <td scope="row">{{appointment.patient.name}}</td>
+                        <td scope="row">{{appointment.appointmentDate | date : 'mediumTime'}}</td>
+                    </tr> 
+                    <tr *ngIf="appointments.length==0">
+                        <td colspan="3" class="text-danger">Sorry no Appointments to show..</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+
+    <!-- now another form for seats in hospital-->
+
+    <div class="row">
+        <form [formGroup]="testDetail" (ngSubmit)="processAppointment()" class="form-inline col-md-12">  
+            <div class="col-md-offset-1 col-md-3"> 
+                <input type="number" formControlName="seats" class="form-control" placeholder="Capacity (No of seat)"/>
+            </div>
+            <div class="col-md-offset-1 col-md-3">
+                <input type="number" formControlName="time" class="form-control" placeholder="Test Duration (minutes)"/>
+            </div>
+            <div class="col-md-offset-1 col-3">
+                <button type="submit" class="btn btn-primary">Process Appointment</button>
+            </div>            
+        </form> 
+    </div>
+</div>

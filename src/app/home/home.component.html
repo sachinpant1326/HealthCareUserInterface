@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg navbar-light p-3 mt-3">
+    <div class="container">
+        <a class="navbar-brand font-weight-bold" href="#"> Health Care System <i class="fas fa-medkit fa-lg"></i> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a [routerLink]="'/user/login'" class="nav-link"> Login <i class="fas fa-sign-in-alt"></i> </a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="'/user/sign-up'" class="nav-link"> Sign Up <i class="fas fa-user-plus"></i> </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container mb-5">
+    <div class="d-flex justify-content-around my-5">
+        <div class="flex-grow-1 mt-5 mr-auto">
+            <p class="display-3 text-center text-danger">
+                We Care <i class="fas fa-heart"></i>
+            </p>
+            <p class="display-4 text-center">
+                Because Your Life Matters
+            </p>
+            <p class="text-center mt-3">
+                <a class="btn btn-primary py-3 px-5" [routerLink]="'/user/sign-up'"> Get Started <i
+                        class="fas fa-arrow-right fa-lg"></i> </a>
+            </p>
+        </div>
+        <div class="flex-grow-0 flex-md-grow-1 d-none d-md-block ml-auto">
+            <img src="assets/images/19834.jpg" alt="Diagnotic Center Image" class="img">
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+    <h2 class="text-center my-5 font-weight-bold justify-content-around">
+        Our Features
+    </h2>
+    <div class="row height mt-5">
+        <div class="col-12 col-md-6">
+            <h5 class="text-info text-center"> Bed Availability </h5>
+            <p> Transparency in the status of Beds
+                available at various diagnostic centers.
+                We share our Availability of Vacant beds to our customers. </p>
+        </div>
+        <div class="col-md-6 text-center">
+            <i class="fas fa-procedures fa-5x rise"></i>
+        </div>
+    </div>
+    <div class="row height">
+        <div class="col-md-6 text-center d-none d-md-block">
+            <i class="fas fa-tools fa-5x rise"></i>
+        </div>
+        <div class="col-12 col-md-6">
+            <h5 class="text-info text-center"> Modern Test Equipment </h5>
+            <span> Our Diagnostic Centers are equipped with state
+                of the art equipment with superior and
+                industry grade quality. </span>
+        </div>
+    </div>
+    <div class="row height">
+        <div class="col-12 col-md-6">
+            <h5 class="text-info text-center"> Expertise </h5>
+            <span> We employ field experts from top medical institutes. We never compromise on the
+                quality of people we have.</span>
+        </div>
+        <div class="col-md-6 text-center d-none d-md-block">
+            <i class="fas fa-vials fa-5x rise"></i>
+        </div>
+    </div>
+    <div class="row height">
+        <div class="col-md-6 text-center">
+            <i class="fas fa-calendar-check fa-5x rise"></i>
+        </div>
+        <div class="col-12 col-md-6">
+            <h5 class="text-info text-center"> Easy Appointment </h5>
+            <span> Very easy and intuitive UI to match our customer experiences. Appointments made easy.
+            </span>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row bg-dark text-center p-5 text-light">
+        <div class="col-12">
+
+            <h4>
+                Made with <i class="fas fa-heart text-danger"></i> by Team 5 during Bootcamp
+            </h4>
+        </div>
+    </div>
+</div>

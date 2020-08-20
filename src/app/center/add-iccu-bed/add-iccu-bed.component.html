@@ -1,0 +1,80 @@
+<div class="container mt-4">
+    <div class="card-header border-primary">
+        <h4 class="card-title text-primary"> Add ICCU Bed </h4>
+    </div>
+    <div class="row my-5">
+        <form [formGroup]="iccuBedForm" (ngSubmit)="addICCUBed()" class="col-sm-6 offset-md-3">
+            <div class="form-group row">
+                <label for="noOfBeds"> Enter No. Of Beds <span class="text-danger">*</span></label>
+                <input type="text" formControlName="noOfBeds" placeholder="Enter No Of Beds" id="noOfBeds"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': iccuBedForm.controls.noOfBeds.touched && iccuBedForm.controls.noOfBeds.errors }" />
+                <div
+                    *ngIf="(submitted || iccuBedForm.controls.noOfBeds.touched || iccuBedForm.controls.noOfBeds.dirty) && iccuBedForm.controls.noOfBeds.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="iccuBedForm.controls.noOfBeds.errors.required"> No Of Beds is Required!</span>
+                        <span *ngIf="iccuBedForm.controls.noOfBeds.errors.min"> Min # of beds should be greater than
+                            0!</span>
+                        <span *ngIf="iccuBedForm.controls.noOfBeds.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pricePerDay"> Enter Price Per Day <span class="text-danger">*</span></label>
+                <input type="text" formControlName="pricePerDay" placeholder="Enter Price Per Day" id="pricePerDay"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': iccuBedForm.controls.pricePerDay.touched && iccuBedForm.controls.pricePerDay.errors }" />
+                <div
+                    *ngIf="(submitted || iccuBedForm.controls.pricePerDay.touched || iccuBedForm.controls.pricePerDay.dirty) && iccuBedForm.controls.pricePerDay.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="iccuBedForm.controls.pricePerDay.errors.required"> Price of Bed is
+                            Required!</span>
+                        <span *ngIf="iccuBedForm.controls.pricePerDay.errors.min"> Min Price should not be less than
+                            <i class="fas fa-rupee-sign"></i> 2000 !</span>
+                        <span *ngIf="iccuBedForm.controls.pricePerDay.errors.pattern"> This field should only contain
+                            digits! </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="type"> Select Type Of ICCU <span class="text-danger">*</span></label>
+                <select formControlName="type" id="type" class="form-control"
+                    [ngClass]="{ 'is-invalid': iccuBedForm.controls.type.touched && iccuBedForm.controls.type.errors }">
+                    <option value="" disabled> Select Frame Material </option>
+                    <option value="Standard"> Standard </option>
+                    <option value="Manual"> Manual </option>
+                    <option value="Fowler"> Fowler </option>
+                </select>
+                <div
+                    *ngIf="(submitted || iccuBedForm.controls.type.touched || iccuBedForm.controls.type.dirty) && iccuBedForm.controls.type.errors">
+                    <div class="badge badge-pill badge-danger">
+                        <span *ngIf="iccuBedForm.controls.type.errors.required">Type is
+                            Required!</span>
+                        <span *ngIf="iccuBedForm.controls.type.errors.pattern"> Accepted Value are "Standard"
+                            and "Fowler" and "Manual" only! </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-check row my-2">
+                <input type="checkbox" formControlName="batteryBackup" id="batteryBackup" class="form-check-input" />
+                <label for="batteryBackup" class="form-check-label"> Whether Battery Backup Available? <span class="text-danger">*</span></label>
+            </div>
+            <div class="form-check row my-2">
+                <input type="checkbox" formControlName="hasABS" id="hasABS" class="form-check-input" />
+                <label for="hasABS" class="form-check-label"> Whether it has ABS Technology? <span class="text-danger">*</span></label>
+            </div>
+            <div class="form-check row my-2">
+                <input type="checkbox" formControlName="remoteOperated" id="remoteOperated" class="form-check-input" />
+                <label for="remoteOperated" class="form-check-label"> Whether Remote Operatable ? <span class="text-danger">*</span></label>
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success mr-2"> Add Beds <i class="fas fa-plus"></i></button>
+                <button type="reset" class="btn btn-outline-danger"> Reset </button>
+            </div>
+        </form>
+    </div>
+</div>

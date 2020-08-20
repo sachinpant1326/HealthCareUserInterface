@@ -1,0 +1,165 @@
+<div class="container">
+    <div class="card-header border-primary">
+        <h4 class="card-title">
+            Waiting Patients - {{ center_name }}
+        </h4>
+    </div>
+    <div class="card-header border-danger mt-3 col-md-4 col-12 offset-md-4 text-center">
+        <h5 class="card-title"> General Bed Patients </h5>
+    </div>
+    <table class="table table-hover table-striped my-5">
+        <thead>
+            <tr>
+                <th> Select </th>
+                <th> Patient Name </th>
+                <th> Gender </th>
+                <th> Age </th>
+                <th> Requested On </th>
+                <th> Bed Type </th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr class="col-12 col-md-8 offset-md-2" *ngFor="let patient of generalPatients;">
+                <!-- {{ patient | json }} -->
+                <td>
+                    <input type="checkbox" name="selected_id" (change)="handleGeneralBedCheck($event)" [value]="patient.id">
+                </td>
+                <td>{{ patient.patient.name }} </td>
+                <td>{{ patient.patient.gender }} </td>
+                <td>{{ patient.patient.age }} </td>
+                <td>{{ patient.requestedOn | date:'mediumDate' }} </td>
+                <td>{{ patient.type }} </td>
+            </tr>
+            <tr *ngIf="generalPatients.length != 0" class="text-center">
+                <td colspan="6">
+                    <button class="btn btn-outline-info" (click)="allocateGeneralBeds()"> Allocate Beds </button>
+                </td>
+            </tr>
+            <tr *ngIf="generalPatients.length == 0" class="text-center">
+                <td colspan="6">
+                    No General Waiting Patients Now !
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card-header border-danger mt-3 col-md-4 col-12 offset-md-4 text-center">
+        <h5 class="card-title"> Ventilator Bed Patients </h5>
+    </div>
+    <table class="table table-hover table-striped my-5">
+        <thead>
+            <tr>
+                <th> Select </th>
+                <th> Patient Name </th>
+                <th> Gender </th>
+                <th> Age </th>
+                <th> Requested On </th>
+                <th> Bed Type </th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            <tr class="col-12 col-md-8 offset-md-2" *ngFor="let patient of ventilatorPatients;">
+                <!-- {{ patient | json }} -->
+                <td>
+                    <input type="checkbox" name="selected_id" (change)="handleVentilatorBedCheck($event)" [value]="patient.id">
+                </td>
+                <td>{{ patient.patient.name }} </td>
+                <td>{{ patient.patient.gender }} </td>
+                <td>{{ patient.patient.age }} </td>
+                <td>{{ patient.requestedOn | date:'mediumDate' }} </td>
+                <td>{{ patient.type }} </td>
+            </tr>
+            <tr *ngIf="ventilatorPatients.length != 0" class="text-center">
+                <td colspan="6">
+                <button class="btn-btn-outline-info" (click)="allocateVentilatorBeds()"> Allocate Beds </button>
+                </td>
+            </tr>
+            <tr *ngIf="ventilatorPatients.length == 0" class="text-center">
+                <td colspan="6">
+                    No Ventilator Waiting Patients Now !
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card-header border-danger mt-3 col-md-4 col-12 offset-md-4 text-center">
+        <h5 class="card-title"> ICU Bed Patients </h5>
+    </div>
+    <table class="table table-hover table-striped my-5">
+        <thead>
+            <tr>
+                <th> Select </th>
+                <th> Patient Name </th>
+                <th> Gender </th>
+                <th> Age </th>
+                <th> Requested On </th>
+                <th> Bed Type </th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            <tr class="col-12 col-md-8 offset-md-2" *ngFor="let patient of icuPatients;">
+                <!-- {{ patient | json }} -->
+                <td>
+                    <input type="checkbox" name="selected_id" (change)="handleICUBedCheck($event)" [value]="patient.id">
+                </td>
+                <td>{{ patient.patient.name }} </td>
+                <td>{{ patient.patient.gender }} </td>
+                <td>{{ patient.patient.age }} </td>
+                <td>{{ patient.requestedOn | date:'mediumDate' }} </td>
+                <td>{{ patient.type }} </td>
+            </tr>
+            <tr *ngIf="icuPatients.length != 0" class="text-center">
+                <td colspan="6">
+                <button class="btn btn-outline-info" (click)="allocatedICUBeds()"> Allocate Beds </button>
+                </td>
+            </tr>
+            <tr *ngIf="icuPatients.length == 0" class="text-center">
+                <td colspan="6">
+                    No ICU Waiting Patients Now !
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card-header border-danger mt-3 col-md-4 col-12 offset-md-4 text-center">
+        <h5 class="card-title"> ICCU Bed Patients </h5>
+    </div>
+    <table class="table table-hover table-striped my-5">
+        <thead>
+            <tr>
+                <th> Select </th>
+                <th> Patient Name </th>
+                <th> Gender </th>
+                <th> Age </th>
+                <th> Requested On </th>
+                <th> Bed Type </th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            <tr class="col-12 col-md-8 offset-md-2" *ngFor="let patient of iccuPatients;">
+                <!-- {{ patient | json }} -->
+                <td>
+                    <input type="checkbox" name="selected_id" (change)="handleICCUBedCheck($event)" [value]="patient.id">
+                </td>
+                <td>{{ patient.patient.name }} </td>
+                <td>{{ patient.patient.gender }} </td>
+                <td>{{ patient.patient.age }} </td>
+                <td>{{ patient.requestedOn | date:'mediumDate' }} </td>
+                <td>{{ patient.type }} </td>
+            </tr>
+            <tr *ngIf="iccuPatients.length != 0" class="text-center">
+                <td colspan="6">    
+
+                    <button class="btn btn-outline-info" (click)="allocateICCUBeds()"> Allocate Beds </button>
+                </td>
+            </tr>
+            <tr *ngIf="iccuPatients.length == 0" class="text-center">
+                <td colspan="6">
+                    No ICCU Waiting Patients Now !
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,67 @@
+<!-- <p>Book An Appointment</p> -->
+
+<header>
+    <h1 style="text-align: center; font-size:xx-large;">Book An Appointment</h1>
+</header>
+<div>
+    <form #NgForm="ngForm" novalidate (ngSubmit)="makeAppointment()">
+
+        <div>
+            <input type="datetime-local" id="apd" placeholder="Appointment Date" name="apd" #apd="ngModel"
+                [(ngModel)]="appointment.appointmentDate" class="form-control">
+            <div *ngIf="apd.invalid && apd.touched">
+                <div *ngIf="apd.errors.required">Appointment Date is mandatory</div>
+                <!-- <div *ngIf="apd.errors.pattern">Appointment must be booked for future</div> -->
+            </div>
+        </div>
+
+        <div>
+            <input type="text" id="symp" placeholder="Symptoms" name="symp" #symp="ngModel"
+                [(ngModel)]="appointment.symptoms" required pattern="[A-Za-z]{1,10}" class="form-control">
+            <div *ngIf="symp.invalid && symp.touched">
+                <div *ngIf="symp.errors.required">Symptoms must be filled</div>
+                <div *ngIf="symp.errors.pattern">Symptoms must be text</div>
+            </div>
+        </div>
+
+        <div>
+            <label>Choose a Center:</label>
+            <select name="centername" id="cid" placeholder="Diagnostic Center ID" name="cid" #cid="ngModel"
+                [(ngModel)]="appointment.diagnosticCenterId" required class="form-control" (change)="viewByTestName()">
+                <option value="1020">Center 1</option>
+                <option value="1021">Center 2</option>
+                <option value="1022">Center 3</option>
+                <option value="1023">Center 4</option>
+                <option value="1024">Center 5</option>
+            </select>
+            <div *ngIf="cid.invalid && cid.touched">
+                <div *ngIf="cid.errors.required">Center ID is mandatory</div>
+                <div *ngIf="cid.errors.pattern">Must Select</div>
+            </div>
+        </div>
+
+
+        <div>
+            <label>Choose a Test:</label>
+            <select name="tests" id="tid" placeholder="Diagnostic Test ID" name="tid" #tid="ngModel"
+                [(ngModel)]="appointment.testId" required class="form-control">
+                <option *ngFor="let test of tests;" value={{test.id}}>{{test.testName}}</option>
+
+            </select>
+            <div *ngIf="tid.invalid && tid.touched">
+                <div *ngIf="tid.errors.required">Test ID is mandatory</div>
+                <div *ngIf="cid.errors.pattern">Must Select</div>
+            </div>
+        </div>
+
+
+
+
+
+        <div>
+            <input type="submit" value="Book an Appointment">
+        </div>
+
+    </form>
+
+</div>

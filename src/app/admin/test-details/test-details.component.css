@@ -1,0 +1,12 @@
+.heading{
+    background-color: #e2e2e2;
+    text-align: center;
+    font-weight: bold;
+}
+.TestDetail{
+    border: solid 1px #e2e2e2;
+}
+.TestName{
+    font-weight: bolder;
+    text-align: center;
+}

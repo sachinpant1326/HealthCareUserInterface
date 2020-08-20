@@ -1,0 +1,5 @@
+<div class="container mt-5">
+    <div *ngFor="let patient of center_wise_list | keyvalue">
+        <app-waiting-patients-center [center_name]="patient.value.name" [center_id]="patient.key" [patients]="patient.value.patients"></app-waiting-patients-center>
+    </div>    
+</div>

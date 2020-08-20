@@ -1,0 +1,140 @@
+<div class="container mt-5 mb-5">
+<div class="ml-3 mr-3 row heading">
+    <div class="mt-1 mb-1 col-lg-12 col-md-12">
+    <span><h4 class="text-center"><i class="fa fa-medkit"></i>&nbsp;Test Details</h4></span>
+</div>
+</div>
+<div class="mt-3 ml-5 mr-5">
+    <div *ngFor="let test of tests;let i=index">
+           <div class="mt-2 card TestDetail">
+                <div class="card-header text-center font-weight-bold">
+                <h4 class="col-lg-12 col-md-12 TestName">{{test.testName}}</h4>
+                </div>
+                <div class="row col-lg-12 col-md-12">
+                <div class="offset-lg-1 offset-md-1 col-lg-6 col-md-6">
+                <div class="row">
+                <p>{{test.testName}} Price : {{test.testPrice}}</p>
+            </div>
+                <div class="row">
+                    <p>{{test.testName}} Normal Value : {{test.normalValue}}&nbsp;{{test.units}}</p>
+                </div></div>
+                <div class="col-lg-4 col-md-4">
+                    <p>update {{test.testName}} details</p>
+                    <div class="row mb-2">
+                        <button class="btn btn-primary offset-lg-2 offset-md-2" data-toggle="modal" data-target="#editTest" (click)="editTest(i)">Edit</button>
+                    </div>
+                </div></div>
+            </div> 
+            
+            
+        </div>
+        
+       
+    </div>
+<div  class="modal fade bd-example-modal-lg" *ngIf="flag" id="editTest">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit test Details</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editForm" class="offset-lg-1 offset-md-1" (ngSubmit)="editTestDetails()">
+                    <div class="form-group row">
+                        <label for="id" class="col-lg-3 col-md-3">Test Id : </label>
+                        <input type="number" disabled class="col-lg-5 col-md-5" placeholder="Test Id" formControlName="id"/>
+                        <div *ngIf="submitted && editForm.controls.id.errors" class="text-danger">
+                            <div *ngIf="editForm.controls.id.errors.required">
+                                Test Id required...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="testName" class="col-lg-3 col-md-3">Test Name : </label>
+                        <input type="text" class="col-lg-5 col-md-5" placeholder="Test Name" formControlName="testName"/>
+                        <div *ngIf="submitted && editForm.controls.testName.errors" class="text-danger">
+                            <div *ngIf="editForm.controls.testName.errors.required">
+                                Test Name required...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="testPrice" class="col-lg-3 col-md-3">Test Price : </label>
+                        <input type="number" class="col-lg-5 col-md-5" placeholder="Test Price" formControlName="testPrice"/>
+                        <div *ngIf="submitted && editForm.controls.testPrice.errors" class="text-danger">
+                            <div *ngIf="editForm.controls.testPrice.errors.required">
+                                Test Price required...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="normalValue" class="col-lg-3 col-md-3">Normal Value : </label>
+                        <input type="text" class="col-lg-5 col-md-5" placeholder="Test Normal Value" formControlName="normalValue"/>
+                        <div *ngIf="submitted && editForm.controls.normalValue.errors" class="text-danger">
+                            <div *ngIf="editForm.controls.normalValue.errors.required">
+                                Test Normal Value required...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="units" class="col-lg-3 col-md-3">Unit : </label>
+                        <input type="text" class="col-lg-5 col-md-5" placeholder="Unit" formControlName="units"/>
+                        <div *ngIf="submitted && editForm.controls.units.errors" class="text-danger">
+                            <div *ngIf="editForm.controls.units.errors.required">
+                                Unit required...
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success btn-left">Save Changes</button>
+                </form>
+            </div>
+            <div class="modal-footer d-flex">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="mt-3 row">
+      <button class="btn btn-danger" class="offset-lg-8 offset-md-8" (click)="addNewTest()">Add New Test</button>
+  </div>
+  <form [formGroup]="addTestForm" class="mt-3 offset-lg-1 offset-md-1" *ngIf="addTest" (ngSubmit)="persistTest()">
+    <div class="form-group row">
+        <label for="testName" class="col-lg-3 col-md-3">Test Name : </label>
+        <input type="text" class="col-lg-5 col-md-5" placeholder="Test Name" formControlName="testName"/>
+        <div *ngIf="addTestFormSubmitted && addTestForm.controls.testName.errors" class="text-danger">
+            <div *ngIf="addTestForm.controls.testName.errors.required">
+                Test Name required...
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="testPrice" class="col-lg-3 col-md-3">Test Price : </label>
+        <input type="number" class="col-lg-5 col-md-5" placeholder="Test Price" formControlName="testPrice"/>
+        <div *ngIf="addTestFormSubmitted && addTestForm.controls.testPrice.errors" class="text-danger">
+            <div *ngIf="addTestForm.controls.testPrice.errors.required">
+                Test Price required...
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="normalValue" class="col-lg-3 col-md-3">Normal Value : </label>
+        <input type="text" class="col-lg-5 col-md-5" placeholder="Test Normal Value" formControlName="normalValue"/>
+        <div *ngIf="addTestFormSubmitted && addTestForm.controls.normalValue.errors" class="text-danger">
+            <div *ngIf="addTestForm.controls.normalValue.errors.required">
+                Test Normal Value required...
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="units" class="col-lg-3 col-md-3">Unit : </label>
+        <input type="text" class="col-lg-5 col-md-5" placeholder="Unit" formControlName="units"/>
+        <div *ngIf="addTestFormSubmitted && addTestForm.controls.units.errors" class="text-danger">
+            <div *ngIf="addTestForm.controls.units.errors.required">
+                Unit required...
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-success btn-left">Add Test</button>
+  </form>
+</div>

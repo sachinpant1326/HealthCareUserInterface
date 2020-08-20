@@ -1,0 +1,66 @@
+<h2 class="p-4 mx-4"><b>Add Diagnostic Center</b></h2>
+<section class="col-md-10 mx-auto mt-4">
+    <form #frm="ngForm" (ngSubmit)="addDiagnosticCenter()" autocomplete="off">
+        <div class="mt-3"><b>Diagnostic Center Name</b></div>
+      
+        <div><input type="text" name="name" [(ngModel)]="diagnosticCenter.name" class="form-control" #centername="ngModel" required /> 
+          <div class="alert alert-dark mt-3" *ngIf="centername.invalid && (centername.touched || centername.dirty)">
+            Center name is required.
+          </div>
+        </div>
+
+    <div class="mt-3"><b>Diagnostic Center Contact Number</b></div>
+
+        <div><input type="text" name="contactNo" [(ngModel)]="diagnosticCenter.contactNo" class="form-control" #centercontactNo="ngModel" required /> 
+            <div class="alert alert-dark mt-3" *ngIf="centercontactNo.invalid && (centercontactNo.touched || centercontactNo.dirty)">
+              Center contactNo is required.
+            </div>
+          </div>
+
+    <div class="mt-3"><b>Diagnostic Center Address</b></div>
+
+        <div><input type="text" name="address" [(ngModel)]="diagnosticCenter.address" class="form-control" #centeraddress="ngModel" required /> 
+            <div class="alert alert-dark mt-3" *ngIf="centeraddress.invalid && (centeraddress.touched || centeraddress.dirty)">
+              Center address is required.
+            </div>
+          </div>
+    
+    <div class="mt-3"><b>Diagnostic Center Contact Email</b></div>
+
+        <div><input type="text" name="contactEmail" [(ngModel)]="diagnosticCenter.contactEmail" class="form-control" #centercontactEmail="ngModel" required /> 
+            <div class="alert alert-dark mt-3" *ngIf="centercontactEmail.invalid && (centercontactEmail.touched || centercontactEmail.dirty)">
+                Center contact email is required.
+            </div>
+        </div>
+    
+    <div class="mt-3"><b>Diagnostic Center Services Offered</b></div>
+
+        <div><input type="text" name="servicesOffered" [(ngModel)]="diagnosticCenter.servicesOffered" class="form-control" #centerservicesOffered="ngModel" required /> 
+            <div class="alert alert-dark mt-3" *ngIf="centerservicesOffered.invalid && (centerservicesOffered.touched || centerservicesOffered.dirty)">
+              Center services offered is required.
+            </div>
+        </div>
+    
+    <div class="mt-3"><b>User Name</b></div>
+
+        <div><input type="text" name="userName" [(ngModel)]="diagnosticCenter.userName" class="form-control" #centeruserName="ngModel" required /> 
+            <div class="alert alert-dark mt-3" *ngIf="centeruserName.invalid && (centeruserName.touched || centeruserName.dirty)">
+              User name is required.
+            </div>
+        </div>
+    
+    <div class="mt-3"><b>User Password</b></div>
+
+        <div><input type="password" name="password" [(ngModel)]="diagnosticCenter.password" class="form-control" #centerpassword="ngModel" required /> 
+            <div class="alert alert-dark mt-3" *ngIf="centerpassword.invalid && (centerpassword.touched || centerpassword.dirty)">
+              User password is required.
+            </div>
+        </div>
+    
+    <div class="mt-3"><input type="submit" value="Add Center" [disabled]="!frm.valid" class="btn btn-dark" />
+    </div>    
+    
+    </form>
+</section>
+
+

@@ -1,0 +1,47 @@
+<div class="container mt-5">
+  <div class="card-header">
+    <h4 class="card-title">
+      Update Test Result
+    </h4>
+  </div>
+    <form [formGroup]="updateResultForm" (ngSubmit)="addTestResult()" class="col-6 offset-md-3 mt-3">
+      <div class="form-group">
+        <label for="appointmentId"> Appointment Id </label>
+        <input type="text" class="form-control" formControlName="appointmentId" placeholder="appointment Id"
+          id="appointmentId" />
+        <div class="badge badge-pill badge-danger"
+          *ngIf="(updateResultForm.controls.appointmentId.touched || updateResultForm.controls.appointmentId.dirty) && updateResultForm.controls.appointmentId.errors">
+          <div *ngIf="updateResultForm.controls.appointmentId.errors.required"> Appointment Id is
+            required</div>
+          <div *ngIf="updateResultForm.controls.appointmentId.errors.pattern"> Appointment Id be numeric</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="condition"> Condition </label>
+        <select class="form-control" formControlName="condition">
+          <option value="" disabled> Select condition </option>
+          <option *ngFor="let conditionP of conditionType" value="{{conditionP}}">{{conditionP}}</option>
+        </select>
+        <div class="badge badge-pill badge-danger"
+          *ngIf="(updateResultForm.controls.condition.touched || updateResultForm.controls.condition.dirty) && updateResultForm.controls.condition.errors">
+          <div *ngIf="updateResultForm.controls.condition.errors.required"> * Patient Condition is
+            required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="testReading"> Test Reading </label>
+        <input type="text" formControlName="testReading" class="form-control" placeholder="Test Reading" />
+        <div class="badge badge-pill badge-danger"
+          *ngIf="(updateResultForm.controls.testReading.touched || updateResultForm.controls.testReading.dirty) && updateResultForm.controls.testReading.errors">
+          <div *ngIf="updateResultForm.controls.testReading.errors.required">Update Test Reading
+          </div>
+          <div *ngIf="updateResultForm.controls.testReading.errors.pattern"> Test Reading should be
+            numeric</div>
+        </div>
+      </div>
+      <div class="mt-2 text-center"><input type="Submit" value="Update Test Result"
+          class="btn btn-warning mt-2 text-center" />
+      </div>
+
+    </form>
+</div>

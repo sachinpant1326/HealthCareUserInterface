@@ -1,0 +1,25 @@
+<div class="card text-center" *ngIf="bed else noResult">
+    <div class="card-header">
+      Diagnostic Health Care
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Bed Report</h5>
+      <p class="card-text">Price Per Day: {{bed.pricePerDay}}</p>
+      <p class="card-text">Diagnostic Center: {{bed.diagnosticCenter.name}}</p>
+      
+      <a href="#" class="btn btn-primary" routerLink="../mybed">Go Back to Appointment List</a>
+    </div>
+    <div class="card-footer text-muted">
+      #StaySafe
+    </div>
+  </div>
+  <ng-template #noResult>
+      <div class="alert alert-primary" role="alert">
+        <h1>No Bed Booked!!!</h1>
+        <h3>Book it Manually</h3>
+      </div>
+          
+      
+      <a href="#" class="btn btn-primary" routerLink="../mybed">Go Back to Appointment List</a>
+  </ng-template>
+

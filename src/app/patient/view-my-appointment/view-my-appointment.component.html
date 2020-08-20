@@ -1,0 +1,53 @@
+<div class="container mt-5">
+
+    <div class="card-header text-center mb-5 border-danger">
+        <h4 class="card-title">
+            View All Appointments
+        </h4>
+    </div>
+<form  class="form-inline" novalidate (ngSubmit)="viewMyAppointment()">
+
+    <div >
+        Search:<input type="number" id="aid" placeholder="Appointment ID to search"   name="aid" #aid="ngModel" [(ngModel)]="id" required pattern="[1-9][0-9]{4,6}" class="form-control">
+        <div *ngIf="aid.invalid && aid.touched">
+            <div *ngIf="aid.errors.required">Appointment ID is mandatory and it must be Number</div>
+            <div *ngIf="aid.errors.pattern">Length of Id must be between 4-6</div>
+        </div>
+    </div>
+
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>
+
+
+<table *ngIf="flag==1" class="table table-striped">
+   
+     <thead>
+        <tr class="table table-dark">
+            <th>Appointment ID</th>
+            <th>Appointment Date</th>
+            <th> Time </th>
+            <th> Status </th>
+            <th>Test Name</th>
+            <th>Diagnostic Center Name</th>
+        
+        </tr>
+
+    </thead>
+ <tbody>
+    <tr *ngFor="let appointment of appointment">
+    <td>{{appointment.id}}</td>
+    <td>{{appointment.appointmentDate | date : 'mediumDate'}}</td>
+    <td>{{ appointment.appointmentDate | date : 'mediumTime'}}</td>
+    <td *ngIf="appointment.approvalStatus == 0 "> Pending </td>
+    <td *ngIf="appointment.approvalStatus == 1 "> Accepted </td>
+    <td *ngIf="appointment.approvalStatus == 2 "> Rejected </td>
+    <td>{{appointment.diagnosticTest.testName }}</td>
+    <td>{{appointment.diagnosticCenter.name}}</td>
+    </tr>
+
+ </tbody>
+    
+</table>
+</div>

@@ -1,0 +1,24 @@
+<div class="card text-center" *ngIf="testResult else noResult">
+    <div class="card-header">
+      Diagnostic Health Care
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Test Report</h5>
+      <p class="card-text">Condition: {{testResult.condition}}</p>
+      <p class="card-text">Reading: {{testResult.testReading}}</p>
+      
+      <a href="#" class="btn btn-primary" routerLink="../allTest">Go Back to Test</a>
+    </div>
+    <div class="card-footer text-muted">
+      #StaySafe
+    </div>
+  </div>
+  <ng-template #noResult>
+      <div class="alert alert-primary" role="alert">
+        <h1>Result Awaited!!!</h1>
+        <h3>Check Back in few Days</h3>
+      </div>
+          
+      
+      <a href="#" class="btn btn-primary" routerLink="../allTest">Go Back to Test</a>
+  </ng-template>

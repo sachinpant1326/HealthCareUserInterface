@@ -1,0 +1,32 @@
+<header>
+    <h1 style="text-align: center; font-size:xx-large;">Welcome To Appointments</h1>
+</header>
+<div>
+
+    <article>
+
+
+        <div style="text-align: center;">
+            <button><a class="text-info" routerLink="/makeappointment" (click)="makeapp()">Book Appointment</a></button>
+            <button><a class="text-info" routerLink="/viewallappointments" (click)="viewallapp()">View All
+                    Appointments</a></button>
+            <button><a class="text-info" routerLink="/viewmyappointment" (click)="viewmyapp()">View My Appointment</a>
+            </button>
+        </div>
+
+        <article *ngIf="vallapp==1">
+            <app-view-all-appointment></app-view-all-appointment>
+        </article>
+
+
+        <article *ngIf="vmyapp==1">
+            <app-view-my-appointment></app-view-my-appointment>
+        </article>
+
+        <article *ngIf="mapp==1">
+            <app-make-appointment></app-make-appointment>
+        </article>
+
+    </article>
+
+</div>

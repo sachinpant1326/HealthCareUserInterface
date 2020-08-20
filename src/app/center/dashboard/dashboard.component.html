@@ -1,0 +1,92 @@
+<nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow" style="background-color: #f16161;">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/admin" style="background-color: #c74646;">
+        <i class="fas fa-shopping-cart"></i> Health Care 
+    </a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item">
+            <span class="text-white"> Diagnostic Center </span>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item main">
+                        <a class="nav-link" routerLink="/admin">
+                            <i class="fas fa-home"></i>&nbsp; Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item main">
+                        <a class="nav-link main" data-toggle="collapse" href="#bedsList" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fas fa-procedures" aria-hidden="true"></i>&nbsp; Available Beds
+                        </a>
+                        <span class="collapse" id="bedsList">
+                            <a class="nav-link main ml-4" [routerLink]="'/center/all-beds'">
+                                - View All Beds
+                            </a>
+                            <a class="nav-link main ml-4" [routerLink]="['/center','add-bed']" [queryParams]="{ type : 'general'}">
+                                - Add General Bed
+                            </a>
+                            <a class="nav-link main ml-4" [routerLink]="['/center','add-bed']" [queryParams]="{ type : 'iccu'}">
+                                - Add ICCU Bed
+                            </a>
+                            <a class="nav-link main ml-4" [routerLink]="['/center','add-bed']" [queryParams]="{ type : 'icu'}">
+                                - Add ICU Bed
+                            </a>
+                            <a class="nav-link main ml-4" [routerLink]="['/center','add-bed']" [queryParams]="{ type : 'ventilator'}">
+                                - Add Ventilator Bed
+                            </a> 
+                        </span>
+                    </li>
+
+                    <li class="nav-item main">
+                        <a class="nav-link main" data-toggle="collapse" href="#updateTestResult" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fa fa-users" aria-hidden="true"></i>&nbsp;TestResult
+                        </a>
+                        <span class="collapse" id="updateTestResult">
+                            <a class="nav-link main ml-4" routerLink="Updatetestresult">
+                                - Update TestResult
+                            </a>
+                        </span>
+                    </li>
+
+
+                    <li class="nav-item main">
+                        <a class="nav-link main" data-toggle="collapse" href="#patients" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fas fa-user-friends"></i>&nbsp; Patients
+
+                        </a>
+                        <span class="collapse" id="patients">
+                            <a class="nav-link main ml-4" routerLink="admitpatient">
+                                - Admit Patient
+                            </a>
+                            <a class="nav-link main ml-4" routerLink="dischargepatient">
+
+                                - Discharge Patient
+
+                            </a>
+                        </span>
+                    </li>
+                    <li class="nav-item main">
+                        <a class="nav-link" routerLink="/home" (click)="logOut()">
+                            <i class="fas fa-sign-out-alt" aria-hidden="true"></i>&nbsp; Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 animated">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>
+<div *ngIf="showLoad">
+    <app-loading></app-loading>
+</div>
