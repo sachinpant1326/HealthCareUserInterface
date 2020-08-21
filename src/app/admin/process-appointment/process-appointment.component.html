@@ -6,6 +6,7 @@
                 </div>
                 <div class="col-md-3">
                     <select formControlName="test" class="form-control">
+                        <option value="" selected>Select Test Name</option>
                         <option *ngFor="let t of tests; let i = index" [value]="tests[i].testName">
                           {{tests[i].testName}}
                         </option>
@@ -13,9 +14,10 @@
                 </div>
                 <div class="col-md-3">
                     <select formControlName="status" class="form-control">
+                        <option value="" selected>Appointment status</option>
+                        <option value="0" selected>Unprocessed</option>
                         <option value="1">Approved</option>
                         <option value="2">Rejected</option>
-                        <option value="0">Unprocessed</option>
                     </select>
                 </div>
                 <div class="col-md-3">

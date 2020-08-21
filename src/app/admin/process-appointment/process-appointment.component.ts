@@ -28,14 +28,14 @@ export class ProcessAppointmentComponent implements OnInit {
   ngOnInit(): void {
     
     this.appointmentDetail=this.formBuilder.group({
-      centre:['',Validators.required],
+      centre:['',[Validators.required,Validators.min(1),Validators.max(1000000)]],
       test:['',Validators.required],
       status:['',Validators.required]
     });
 
     this.testDetail=this.formBuilder.group({
-      seats:['',Validators.required],
-      time:['',Validators.required]
+      seats:['',[Validators.required,Validators.min(0),Validators.max(1000)]],
+      time:['',[Validators.required,Validators.min(1),Validators.max(500)]]
     });
 
   }
@@ -77,7 +77,10 @@ export class ProcessAppointmentComponent implements OnInit {
     let status=this.appointmentDetail.controls.status.value;
 
     this.adminService.getAppointments(centre,test,status).subscribe(
-      data=>{this.appointments=data;},
+      data=>{
+        this.appointments=data;
+        this.toastService.success("List updated");
+      },
       err=>{this.toastService.error(this.errorMessage);}
       );
   }
@@ -86,6 +89,7 @@ export class ProcessAppointmentComponent implements OnInit {
     this.adminService.getAllTests().subscribe(
       data=>{
         this.tests=data;
+
       },
       err=>{}
     );
